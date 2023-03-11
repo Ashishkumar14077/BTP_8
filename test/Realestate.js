@@ -6,7 +6,7 @@ const tokens = (n) => {
 }
 
 const ID = 1
-const SOLD = 0
+const SOLD = 1
 const BED = 2
 const BATH = 2
 const ACRELOT = 2
@@ -84,27 +84,51 @@ describe("Realestate", () => {
 
   })
 
-  describe("Buying", ()=>{
-    let transaction 
 
-    beforeEach(async () => {
-
-      //list
-      transaction = await realestate.connect(deployer).list(ID, SOLD, BED, BATH, ACRELOT, HOUSESIZE, STREET, CITY, STATE, IMAGE, PRICE)
-      await transaction.wait()
-
-      //buy
-      transaction = await realestate.connect(buyer).buy(ID, { value: PRICE })
-
-    })
-
+  describe("Buying",()=>{
     
-    it("updates the contract balance",async()=>{
-      const result = await ethers.provider.getBalance(realestate.address) // address of smart contract
-      // console.log(result)
-      expect(result).to.equal(PRICE)
-    })
+    let transaction
+    
+    beforeEach(async()=>{
+      // List an Item 
+     transaction=await realestate.connect(deployer).list(ID, SOLD, BED, BATH, ACRELOT, HOUSESIZE, STREET, CITY, STATE, IMAGE, PRICE);
+      await transaction.wait()
+      //buy an item 
+      transaction =await realestate.connect(buyer).buy(ID,{value : PRICE});
 
-  })
+    })
+    
+      
+      it("Updates the Buyer's Order Count", async()=>{
+      
+        const result= await realestate.orderCount(buyer.address);
+        expect(result).to.equal(1);
+      
+      })
+      it("Adds the order", async()=>{
+      
+        const order= await realestate.orders(buyer.address,1);
+        expect(order.time).to.be.greaterThan(0);
+        // expect(order.item.name).to.equal(NAME);
+      
+      })
+      it("Updates the contract Balance", async()=>{
+      
+        const result= await ethers.provider.getBalance(realestate.address);
+        expect(result).to.equal(PRICE);
+        console.log(result);
+        // console.log(deployer.address==realestate.address);
+      
+      })
+
+      it("Emits Buy event", async()=>{
+      
+        //Used emit keyword to emit List named event 
+       expect(transaction).to.emit(realestate,"Buy");
+      
+      })
+
+   })
+
 
 })
