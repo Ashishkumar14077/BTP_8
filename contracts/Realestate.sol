@@ -19,16 +19,24 @@ contract Realestate {
         uint256 price;
     }
 
-    struct Order {
+
+ // Structure for the order
+    struct Order{
         uint256 time;
         Plot plot;
     }
 
+    //Plot details 
     mapping(uint256 => Plot) public plots;
-    mapping(address => mapping(uint256 => Order)) public orders;
-    mapping(address => uint256) public orderCount;
+   //Person who created order has created how many orders
+   mapping(address=>uint256) public orderCount;
+   //Person who created orders each order of his with product id and product map
+   mapping(address=>mapping(uint256=>Order)) public orders;
 
+//Create an event for listing an item 
     event List(uint256 price,uint256 sold);
+   //    Create an event for buying an item 
+   event Buy(address buyer,uint256 orderCount,uint256 plotID);
 
     modifier onlyOwner(){
         require(msg.sender == owner); //owner can oly add houses on list
@@ -85,28 +93,36 @@ contract Realestate {
     }
 
     //buy house
+     //buy Products
     function buy(uint256 _id) public payable{
-        //Fetch Plot
-        Plot memory plot = plots[_id];
 
-         // Require enough ether to buy item
-        require(msg.value >= plot.price);
+        Plot memory plot= plots[_id];
+          // Requires enough ether to place an order
 
-        /* require changes */
+        require(msg.value>=plot.price);
 
-        // Require item is available
-        require(plot.sold == 1);
+          //Require enough stock to be bought
 
-        //create an order
-        Order memory order = Order(block.timestamp, plot);
+        require(plot.sold>0);
 
-        //save order to chian
+        Order memory order= Order(block.timestamp,plot);
+
+        // Save order to the chain
         orderCount[msg.sender]++;
 
-        //change the availability
+        orders[msg.sender][orderCount[msg.sender]]=order;  //chain of orders of given person
 
-        //emit event
+        //Subtract stock
+        plots[_id].sold=plot.sold-1;
+
+        //Emit event
+        emit Buy(msg.sender,orderCount[msg.sender],plot.id);
     }
+  
 
     //withdraw funds
+    function withdraw() public onlyOwner {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success);
+    }
 }
