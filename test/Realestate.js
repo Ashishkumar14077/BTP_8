@@ -6,7 +6,7 @@ const tokens = (n) => {
 }
 
 const ID = 1
-const SOLD = 0
+const SOLD = 1
 const BED = 2
 const BATH = 2
 const ACRELOT = 2

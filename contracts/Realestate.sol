@@ -19,7 +19,14 @@ contract Realestate {
         uint256 price;
     }
 
+    struct Order {
+        uint256 time;
+        Plot plot;
+    }
+
     mapping(uint256 => Plot) public plots;
+    mapping(address => mapping(uint256 => Order)) public orders;
+    mapping(address => uint256) public orderCount;
 
     event List(uint256 price,uint256 sold);
 
@@ -79,9 +86,22 @@ contract Realestate {
 
     //buy house
     function buy(uint256 _id) public payable{
-        //receive crpto
-        
+        //Fetch Plot
+        Plot memory plot = plots[_id];
+
+         // Require enough ether to buy item
+        require(msg.value >= plot.price);
+
+        /* require changes */
+
+        // Require item is available
+        require(plot.sold == 1);
+
         //create an order
+        Order memory order = Order(block.timestamp, plot);
+
+        //save order to chian
+        orderCount[msg.sender]++;
 
         //change the availability
 
