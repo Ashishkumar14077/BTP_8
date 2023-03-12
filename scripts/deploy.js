@@ -12,7 +12,36 @@ const tokens = (n) => {
 }
 
 async function main() {
+  // Setup accounts
+  const [deployer] = await ethers.getSigners()
 
+  // Deploy Realestate
+  const Realestate = await hre.ethers.getContractFactory("Realestate")
+  const realestate = await Realestate.deploy()
+  await realestate.deployed()
+
+  console.log(`Deployed Realestate Contract at: ${realestate.address}\n`)
+
+  // Listing items...
+  for (let i = 0; i < items.length; i++) {
+    const transaction = await realestate.connect(deployer).list(
+      items[i].id,
+      items[i].sold,
+      items[i].bed,
+      items[i].bath,
+      items[i].acreLot,
+      items[i].housesize,
+      items[i].street,
+      items[i].city,
+      items[i].state,
+      items[i].image,
+      tokens(items[i].price)
+    )
+
+    await transaction.wait()
+
+    console.log(`Listed item ${items[i].id}: ${items[i].street}`)
+  }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
