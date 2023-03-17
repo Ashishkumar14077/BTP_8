@@ -20,7 +20,7 @@ const PRICE = tokens(1)
 
 describe("Realestate", () => {
   let realestate
-  let deployer, buyer
+  let deployer, seller, buyer
 
   beforeEach(async () => {
     // setup account
@@ -42,6 +42,49 @@ describe("Realestate", () => {
   })
 
   describe("Listing", ()=>{
+    let transaction 
+
+    beforeEach(async () => {
+
+      //list
+      transaction = await realestate.connect(deployer).list(
+        ID,
+        SOLD,
+        BED,
+        BATH,
+        ACRELOT,
+        HOUSESIZE,
+        STREET,
+        CITY,
+        STATE,
+        IMAGE,
+        PRICE
+      )
+
+      await transaction.wait()
+    })
+
+    it("Returns plot attributes", async() =>{
+      const plot = await realestate.plots(ID)
+      expect(plot.id).to.equal(ID)
+      expect(plot.sold).to.equal(SOLD)
+      expect(plot.bed).to.equal(BED)
+      expect(plot.bath).to.equal(BATH)
+      expect(plot.acreLot).to.equal(ACRELOT)
+      expect(plot.housesize).to.equal(HOUSESIZE)
+      expect(plot.street).to.equal(STREET)
+      expect(plot.city).to.equal(CITY)
+      expect(plot.state).to.equal(STATE)
+      expect(plot.image).to.equal(IMAGE)
+      expect(plot.price).to.equal(PRICE)
+    })
+    it("Emits List events", ()=>{
+      expect(transaction).to.emit(realestate,"List")
+    })
+
+  })
+
+  describe("Creating", ()=>{
     let transaction 
 
     beforeEach(async () => {

@@ -3,6 +3,7 @@ pragma solidity ^0.8.9;
 
 contract Realestate {
     address public owner;
+    uint public productCount = 0;
 
     struct Plot{
         uint256 id;
@@ -33,7 +34,10 @@ contract Realestate {
    //Person who created orders each order of his with product id and product map
    mapping(address=>mapping(uint256=>Order)) public orders;
 
-//Create an event for listing an item 
+    //event for creating new plot 
+    event PlotCreated(address seller,uint256 sold);
+
+    //Create an event for listing an item 
     event List(uint256 price,uint256 sold);
    //    Create an event for buying an item 
    event Buy(address buyer,uint256 orderCount,uint256 plotID);
@@ -61,7 +65,7 @@ contract Realestate {
         string memory _state,
         string memory _image,
         uint256 _price
-        ) public onlyOwner{
+        ) public {
             
         
         
@@ -92,6 +96,48 @@ contract Realestate {
 
     }
 
+    function createProduct(
+        uint256 _id,
+        uint256 _sold,
+        uint256 _bed,
+        uint256 _bath,
+        uint256 _acreLot,
+        uint256 _housesize,
+        // string memory _fulladdress,
+        string memory _street,
+        string memory _city,
+        string memory _state,
+        string memory _image,
+        uint256 _price
+    ) public {
+        // // Require a valid name
+        // require(bytes(_name).length > 0);
+        // // Require a valid price
+        require(_price > 0);
+        
+        // Increment product count
+        productCount ++;
+        _id = productCount;
+        // Create the product
+        plots[productCount] = Plot(
+            _id,
+            _sold,
+            _bed,
+            _bath,
+            _acreLot,
+            _housesize,
+            // _fulladdress,
+            _street,
+            _city,
+            _state,
+            _image,
+            _price
+            );
+        
+        // Trigger an event
+        emit PlotCreated(msg.sender, _sold);
+    } 
+
     //buy house
      //buy Products
     function buy(uint256 _id) public payable{
@@ -118,8 +164,7 @@ contract Realestate {
         //Emit event
         emit Buy(msg.sender,orderCount[msg.sender],plot.id);
     }
-  
-
+    
     //withdraw funds
     function withdraw() public onlyOwner {
         (bool success, ) = owner.call{value: address(this).balance}("");
