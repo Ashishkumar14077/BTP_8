@@ -50,6 +50,9 @@ contract Realestate {
     constructor() {
         owner = msg.sender;
     } 
+    // function plotsCount() public view returns(uint count){
+    //     return productCount;
+    // }
 
     //List house
     function list(

@@ -3,14 +3,27 @@
     {
       "id": 1,
       "sold": 1,
-      "bed" : 2,
+      "bed": 2,
       "bath": 2,
-      "acreLot" : 5,
-      "housesize" : 2,
+      "acreLot": 5,
+      "housesize": 2,
       "street": "RK pUram",
       "city": "new delhi",
       "state": "delhi",
       "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/camera.jpg",
+      "price": "1"
+    },
+    {
+      "id": 2,
+      "sold": 1,
+      "bed": 2,
+      "bath": 2,
+      "acreLot": 5,
+      "housesize": 2,
+      "street": "Dwarka",
+      "city": "new delhi",
+      "state": "delhi",
+      "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/drone.jpg",
       "price": "1"
     }
   ]

@@ -16,19 +16,68 @@ import config from "./config.json";
 
 function App() {
   const [account, setAccount] = useState(null);
+  const [provider, setProvider] = useState(null); //provides the connection of blockchain
+  const [realestate, setRealestate] = useState(null);
+  const [plot, setPlot] = useState({});
+  const [plots, setPlots] = useState(null);
+  const [plotsCount, setPLotsCount] = useState(null);
+
+  const togglePop = (item) => {
+    console.log("togglePop....");
+  };
 
   const loadBlockchainData = async () => {
-    //get accounts from meta msk
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    const account = ethers.utils.getAddress(accounts[0]);
-    // console.log(account)
-    setAccount(account);
+    //connect to bc
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    setProvider(provider);
+
+    const network = await provider.getNetwork();
+
+    //create JS version of smart contract
+    const realestate = new ethers.Contract(
+      config[network.chainId].realestates.address,
+      Realestate,
+      provider
+    );
+
+    setRealestate(realestate);
+
+    //load items
+    const plots = [];
+    const productCount = await realestate.productCount();
+
+    // setPLotsCount(plotsCount);
+
+    console.log(productCount.toString());
+    // if (len == 0) {
+    //   const plot = await realestate.plots(1);
+    //   plots.push(plot);
+    // }
+
+    for (var i = 0; i < 9; i++) {
+      const plot = await realestate.plots(i + 1);
+      plots.push(plot);
+      // console.log(item);
+    }
+
+    setPlots(plots);
   };
   useEffect(() => {
     loadBlockchainData();
   }, []);
+
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     account: '',
+  //     productCount: 0,
+  //     plots: [],
+  //     loading: true
+  //   }
+  // }
+  // createProperty(bed,bath,acreLot,housesize,street,city,state,image,price){
+
+  // }
 
   return (
     <Router>
@@ -45,7 +94,7 @@ function App() {
         />
         <Route
           path="/buy"
-          element={<BuyProperty account={account} setAccount={setAccount} />}
+          element={plots && <BuyProperty plots={plots} togglePop={togglePop} />}
         />
       </Routes>
     </Router>
