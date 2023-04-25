@@ -7,42 +7,45 @@ contract Marketplace {
 
     struct Product {
         uint id;
-        string name;
+        // string name;
         uint bed;
         uint bath;
-        uint acreLot;
-        uint housesize;
+        string acreLot;
+        string housesize;
         string houseAddress;
         string image;
         uint price;
+        uint predict;
         address payable owner;
         bool purchased;
     }
 
     event ProductCreated(
         uint id,
-        string name,
+        // string name,
         uint bed,
         uint bath,
-        uint acreLot,
-        uint housesize,
+        string acreLot,
+        string housesize,
         string houseAddress,
         string image,
         uint price,
+        uint predict,
         address payable owner,
         bool purchased
     );
 
     event ProductPurchased(
         uint id,
-        string name,
+        // string name,
         uint bed,
         uint bath,
-        uint acreLot,
-        uint housesize,
+        string acreLot,
+        string housesize,
         string houseAddress,
         string image,
         uint price,
+        uint predict,
         address payable owner,
         bool purchased
     );
@@ -52,17 +55,18 @@ contract Marketplace {
     }
 
     function createProduct(
-        string memory _name,
+        // string memory _name,
         uint _bed,
         uint _bath,
-        uint _acreLot,
-        uint _housesize,        
+        string memory _acreLot,
+        string memory _housesize,        
         string memory _houseAddress,
         string memory _image, 
-        uint _price
+        uint _price,
+        uint _predict
         ) public {
         // Require a valid name
-        require(bytes(_name).length > 0);
+        // require(bytes(_name).length > 0);
         // Require a valid price
         require(_price > 0);
         // Increment product count
@@ -70,7 +74,7 @@ contract Marketplace {
         // Create the product
         products[productCount] = Product(
             productCount,
-            _name,
+            // _name,
             _bed,
             _bath,
             _acreLot,
@@ -78,12 +82,13 @@ contract Marketplace {
             _houseAddress,
             _image,
             _price,
+            _predict,
             msg.sender,
             false);
         // Trigger an event
         emit ProductCreated(
             productCount, 
-            _name,
+            // _name,
             _bed,
             _bath,
             _acreLot,
@@ -91,6 +96,7 @@ contract Marketplace {
             _houseAddress,
             _image, 
             _price, 
+            _predict,
             msg.sender, 
             false);
     }
@@ -119,7 +125,7 @@ contract Marketplace {
         // Trigger an event
         emit ProductPurchased(
             productCount,
-            _product.name,
+            // _product.name,
             _product.bed,
             _product.bath,
             _product.acreLot,
@@ -127,6 +133,7 @@ contract Marketplace {
             _product.houseAddress,
             _product.image,
             _product.price,
+            _product.predict,
             msg.sender,
              true
         );

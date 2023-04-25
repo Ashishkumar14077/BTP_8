@@ -81,26 +81,28 @@ class App extends Component {
   }
 
   createProduct(
-    name,
+    // name,
     bed,
     bath,
     acreLot,
     housesize,
     houseAddress,
     image,
-    price
+    price,
+    predict
   ) {
     this.setState({ loading: true });
     this.state.marketplace.methods
       .createProduct(
-        name,
+        // name,
         bed,
         bath,
         acreLot,
         housesize,
         houseAddress,
         image,
-        price
+        price,
+        predict
       )
       .send({ from: this.state.account })
       .once("transactionHash", (transactionHash) => {

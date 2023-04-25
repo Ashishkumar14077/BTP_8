@@ -31,7 +31,7 @@ contract("Marketplace", ([deployer, seller, buyer]) => {
 
     before(async () => {
       result = await marketplace.createProduct(
-        "iPhone X",
+        // "iPhone X",
         "1",
         "1",
         "2",
@@ -39,6 +39,7 @@ contract("Marketplace", ([deployer, seller, buyer]) => {
         "RKP,new delhi",
         "image.jpg",
         web3.utils.toWei("1", "Ether"),
+        "8000",
         { from: seller }
       );
       productCount = await marketplace.productCount();
@@ -53,7 +54,7 @@ contract("Marketplace", ([deployer, seller, buyer]) => {
         productCount.toNumber(),
         "id is correct"
       );
-      assert.equal(event.name, "iPhone X", "name is correct");
+      // assert.equal(event.name, "iPhone X", "name is correct");
       assert.equal(event.price, "1000000000000000000", "price is correct");
       assert.equal(event.owner, seller, "owner is correct");
       assert.equal(event.purchased, false, "purchased is correct");
@@ -76,7 +77,7 @@ contract("Marketplace", ([deployer, seller, buyer]) => {
         productCount.toNumber(),
         "id is correct"
       );
-      assert.equal(product.name, "iPhone X", "name is correct");
+      // assert.equal(product.name, "iPhone X", "name is correct");
       assert.equal(product.price, "1000000000000000000", "price is correct");
       assert.equal(product.owner, seller, "owner is correct");
       assert.equal(product.purchased, false, "purchased is correct");
@@ -101,7 +102,7 @@ contract("Marketplace", ([deployer, seller, buyer]) => {
         productCount.toNumber(),
         "id is correct"
       );
-      assert.equal(event.name, "iPhone X", "name is correct");
+      // assert.equal(event.name, "iPhone X", "name is correct");
       assert.equal(event.price, "1000000000000000000", "price is correct");
       assert.equal(event.owner, buyer, "owner is correct");
       assert.equal(event.purchased, true, "purchased is correct");

@@ -20,13 +20,21 @@ function callName(req, res) {
   var spawn = require("child_process").spawn;
   const formData = req.body;
 
+  const address = formData.houseAddress;
+  const regex = /\b\d{4}\b/g;
+  const zipcode = address.match(regex)[0];
+
+  // console.log(zipcode);
   // Parameters passed in spawn -
   // 1. type_of_script
   // 2. list containing Path of the script and arguments for the script
   var process = spawn("python", [
     "./predict.py",
-    formData.bed,
-    formData.houseAddress,
+    parseFloat(formData.bed),
+    parseFloat(formData.bath),
+    parseFloat(formData.acreLot),
+    zipcode,
+    parseFloat(formData.housesize),
   ]);
 
   // // Takes stdout data from script which executed
