@@ -223,7 +223,7 @@ nav {
 
 /*-------- WELCOME PAGE -----------*/
 
-/* .home {
+.home {
   color: white;
   margin: auto;
   font-family: "Lalezar";
@@ -232,7 +232,8 @@ nav {
 
 .home .pagi{
   margin-left: 61px;
-} */
+}
+
 .img-slider {
   position: relative;
   width: 100vw;
@@ -294,7 +295,7 @@ height: 100%
   font-weight: bold;
   margin-top: 140px;
   position: absolute;
-  top: 57%;
+  top: 61%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -346,7 +347,7 @@ height: 100%
   color: #03e9f4;
   font-size: 12px;
 }
-/* .login-box .user-box label {
+.login-box .user-box label {
   position: absolute;
   top:0;
   left: 0;
@@ -362,7 +363,7 @@ height: 100%
   left: 0;
   color: #03e9f4;
   font-size: 12px;
-} */
+}
 
 .login-box form button {
   width: 100%;
@@ -376,7 +377,7 @@ height: 100%
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
-  margin-top: 40px;
+  margin-top: 65px;
   letter-spacing: 4px
 
 }

@@ -7840,12 +7840,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x06B5Ecc090E6EAeE3D0Ed6B1aa53FcC7Df014dF2",
-      "transactionHash": "0xac1271e886057ca9f6dc9145e65e11c9d9292a4da78c820474005450d4a8ffbf"
+      "address": "0x355f906a5002360b22318BA9D2BAbDeF8e6845c7",
+      "transactionHash": "0x23a334ed355e3cd5451bf3ede81a51f420faa55d35d0244de2876ac7aa4c0988"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-25T16:07:20.152Z",
+  "updatedAt": "2023-04-25T16:52:45.537Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
