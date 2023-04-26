@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -9,42 +9,62 @@
 html {
   height: 100%;
   background-attachment: fixed;
-
 }
 
 @keyframes slidy {
-  0% { left: 0%; }
-  20% { left: 0%; }
-  25% { left: -100%; }
-  45% { left: -100%; }
-  50% { left: -200%; }
-  70% { left: -200%; }
-  75% { left: -300%; }
-  95% { left: -300%; }
-  100% { left: -400%; }
+  0% {
+    left: 0%;
   }
-  
-  div#slider { overflow: hidden; }
-  div#slider figure img { width: 20%; float: left; }
-  div#slider figure { 
-    position: absolute;
-    width: 500%; 
-    margin: 0;
-    left: 0;
-    text-align: left;
-    font-size: 0;
-    animation: 30s slidy infinite; 
-    background-size: contain;
-    height: 89%;
-    overflow: hidden;
-    overflow-x: hidden;
+  20% {
+    left: 0%;
   }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+  75% {
+    left: -300%;
+  }
+  95% {
+    left: -300%;
+  }
+  100% {
+    left: -400%;
+  }
+}
 
-  body::-webkit-scrollbar {
-    display: none;
-  }
-  
-  
+div#slider {
+  overflow: hidden;
+}
+div#slider figure img {
+  width: 20%;
+  float: left;
+}
+div#slider figure {
+  position: absolute;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+  background-size: contain;
+  height: 89%;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /* html, body{
   background: linear-gradient(rgba(19, 51, 76, 5), rgba(0, 87, 146, 5));
@@ -54,38 +74,36 @@ html {
 } */
 
 :root {
-  --clr-white: #FFFFFF;
+  --clr-white: #ffffff;
   --clr-black: #000000;
   --clr-grey: #707070;
   --clr-bunker: #131921;
   --clr-ebony-clay: #232f3e;
-  --clr-orange: #FF9900;
+  --clr-orange: #ff9900;
   --clr-orange-dark: #cc8111;
 }
 
 body {
   margin: 0;
-  padding:0;
+  padding: 0;
   font-family: sans-serif;
 
   /* important part  */
   /* background: url('../images/bgimage.jpg') no-repeat center center fixed;  */
-  background: linear-gradient(rgba(19, 51, 76, 5), rgba(0, 87, 146, 5)) no-repeat center center fixed;
+  background: linear-gradient(rgba(19, 51, 76, 5), rgba(0, 87, 146, 5))
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
 
   /* background-blend-mode: lighten; */
   /* flood-opacity: 0.5; */
 
-  
   /* background-repeat: no-repeat; */
 
-
-
   /* background: #141e30; */
-  /* background: linear-gradient(#141e30, #243b55); */ 
+  /* background: linear-gradient(#141e30, #243b55); */
   /*
   uncomment if u want
   */
@@ -103,17 +121,15 @@ h2 {
 h2:not(.product__overview h2) {
   font-weight: bold;
   padding-left: 20px;
-  
 }
 /* ------------------------------------------------------ */
 /* -- NAVIGATION -- */
-header * {  
-  display: inline;  
-  }  
-  header li {  
-  margin: 20px;  
-  }  
-  
+header * {
+  display: inline;
+}
+header li {
+  margin: 20px;
+}
 
 nav {
   display: grid;
@@ -144,7 +160,7 @@ nav {
 .nav__links {
   background-color: var(--clr-ebony-clay);
   /* grid-column: 1 / span 3; */
-  
+
   padding: 10px;
 
   display: flex;
@@ -154,7 +170,7 @@ nav {
   list-style: none;
 }
 
-.nav__links ul{
+.nav__links ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -209,17 +225,13 @@ nav {
 
 .nav__connect:hover {
   /* background-color: var(--clr-orange-dark); */
-  
-    background: #03e9f4;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 100px #03e9f4;
-  
-}
 
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
+}
 
 /*-------- WELCOME PAGE -----------*/
 
@@ -230,7 +242,7 @@ nav {
   font-size: 30px;
 }
 
-.home .pagi{
+.home .pagi {
   margin-left: 61px;
 }
 
@@ -252,25 +264,33 @@ nav {
   width: 33.33333333%;
   height: 100%;
   float: left;
-  overflow: hidden
+  overflow: hidden;
 }
 .img-slider .slider-container .slide img {
-display: block;
-width: 100%;
-height: 100%
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 @keyframes slider {
-  0%, 25%, 100%{left: 0}
-  
-  30%, 55%{left: -100%}
-  
-  60%, 85%{left: -200%}
-}
+  0%,
+  25%,
+  100% {
+    left: 0;
+  }
 
+  30%,
+  55% {
+    left: -100%;
+  }
+
+  60%,
+  85% {
+    left: -200%;
+  }
+}
 
 /* ------------------------------------------------------ */
 /* -- CARDS --*/
-
 
 /* ------------------------------------------------------ */
 /* -- PRODUCT -- */
@@ -300,9 +320,9 @@ height: 100%
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -316,7 +336,6 @@ height: 100%
 .login-box .user-box {
   position: relative;
 }
-
 
 .login-box .user-box input {
   width: 100%;
@@ -332,13 +351,13 @@ height: 100%
 
 .login-box .user-box input::placeholder {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 .login-box .user-box input:focus ~ input::placeholder,
 .login-box .user-box input:valid ~ input::placeholder {
@@ -349,13 +368,13 @@ height: 100%
 }
 .login-box .user-box label {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
@@ -376,20 +395,17 @@ height: 100%
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 65px;
-  letter-spacing: 4px
-
+  letter-spacing: 4px;
 }
 
 .login-box button:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #03e9f4,
-              0 0 50px #03e9f4,
-              0 0 100px #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
 }
 
 .login-box button span {
@@ -410,7 +426,8 @@ height: 100%
   0% {
     left: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -422,14 +439,15 @@ height: 100%
   height: 100%;
   background: linear-gradient(180deg, transparent, #03e9f4);
   animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
+  animation-delay: 0.25s;
 }
 
 @keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     top: 100%;
   }
 }
@@ -441,14 +459,15 @@ height: 100%
   height: 2px;
   background: linear-gradient(270deg, transparent, #03e9f4);
   animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
+  animation-delay: 0.5s;
 }
 
 @keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     right: 100%;
   }
 }
@@ -460,22 +479,23 @@ height: 100%
   height: 100%;
   background: linear-gradient(360deg, transparent, #03e9f4);
   animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
+  animation-delay: 0.75s;
 }
 
 @keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     bottom: 100%;
   }
 }
-button .btn1{
+button .btn1 {
   background-color: transparent;
   margin-right: 20px;
 }
-.btn2{
+.btn2 {
   margin-left: 20px;
   background-color: transparent;
 }
@@ -483,21 +503,20 @@ button .btn1{
 .first {
   /* justify-content: right; */
   margin-top: 200px;
-  
+
   border: solid;
 }
 
-.products{
-  font-family: 'Nunito', sans-serif;
-	width: 100wh;
-	height: 90vh;
-	color: #fff;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
-
+.products {
+  font-family: "Nunito", sans-serif;
+  width: 100wh;
+  height: 90vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
 
   align-items: stretch;
   display: grid;
@@ -507,10 +526,8 @@ button .btn1{
   background-size: cover;
   height: 100vh;
 
-
   /* margin: 30px; */
   /*  */
-
 
   /* margin-top: 200px; */
   /* background-size: cover; */
@@ -536,37 +553,36 @@ button .btn1{
   height: 440px;
   text-align: left;
   display: inline-block;
-  background-color: rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   margin: 20px;
   padding: 20px;
-  
 }
 
 .products .product ul.no-bullets {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
-  line-height:1.7em; margin-bottom:1.0em;
+  line-height: 1.7em;
+  margin-bottom: 1em;
 
   /* margin: 5px;  */
   /* Remove margins */
 }
 
-
 .products .product img {
   position: relative;
   top: -5px;
   margin: auto;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   width: 100%;
   -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
-          clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 70%);
 }
 .products .product img:hover {
   -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
-          clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
   -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .products .product h1 {
@@ -577,7 +593,7 @@ button .btn1{
   font-size: 26px;
   margin-top: 16px;
 }
-  
+
 .products .product .price {
   text-align: center;
   font-size: 20px;
@@ -591,37 +607,99 @@ button .btn1{
 }
 
 @-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  color: var(--clr-bunker);
+  margin-top: 16%;
+  box-sizing: border-box;
+  text-align: center;
+  width: 33%;
+  margin-left: 34%;
+  font-family: "Lalezar";
+}
+.img-slider {
+  /* border: solid 5px yellow; */
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  top: -47px;
+  left: 0px;
+  /* background-color: orange; */
+}
+.img-slider .slider-container {
+  position: absolute;
+  width: 300vw;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: slider 26s infinite;
+}
+.img-slider .slider-container .slide {
+  position: relative;
+  width: 33.33333333%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+.img-slider .slider-container .slide img {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+}
+@keyframes slider {
+  0%,
+  25%,
+  100% {
+    left: 0;
+  }
+
+  30%,
+  55% {
+    left: -100%;
+  }
+
+  60%,
+  85% {
+    left: -200%;
+  }
 }
